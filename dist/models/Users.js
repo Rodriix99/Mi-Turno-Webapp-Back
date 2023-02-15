@@ -45,4 +45,4 @@ const userSchema = new Schema({
         ref: "booking",
     },
 });
-exports.default = model("User", userSchema);
+exports.default = model("Users", userSchema);

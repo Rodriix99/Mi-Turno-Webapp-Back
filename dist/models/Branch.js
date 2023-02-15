@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
-;
 const branchSchema = new mongoose_1.Schema({
     ubication: {
         type: String,
@@ -9,7 +8,7 @@ const branchSchema = new mongoose_1.Schema({
     },
     coordinates: {
         type: String,
-        required: true
+        required: true,
     },
     booking: [
         {
