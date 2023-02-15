@@ -3,20 +3,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const bookingSchema = new mongoose_1.Schema({
     branchId: {
-        type: Number,
-        require: true,
+        type: mongoose_1.Schema.Types.ObjectId,
+        ref: "Branch",
     },
-    schedule: {
-        type: Date,
+    reservationDate: {
+        type: String,
         require: true,
     },
     date: {
-        type: Date,
+        type: String,
         require: true,
     },
     userId: {
         type: mongoose_1.Schema.Types.ObjectId,
-        ref: "User",
+        ref: "Users",
     },
     name: {
         type: String,
@@ -34,7 +34,6 @@ const bookingSchema = new mongoose_1.Schema({
         type: String,
         require: true,
         lowercase: true,
-        unique: true,
         trim: true,
     },
     available: {
