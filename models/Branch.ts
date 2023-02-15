@@ -26,4 +26,4 @@ const branchSchema = new Schema({
 
   });
   
-  export default model<IBranch>("User", branchSchema);
+  export default model<IBranch>("Branch", branchSchema);

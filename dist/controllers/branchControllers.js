@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.createdBranch = exports.pickedBranch = exports.branches = void 0;
 const Branch_1 = __importDefault(require("../models/Branch"));
 const branches = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const branchLocations = yield Branch_1.default.findOne({ ubication: req.body.ubication });
@@ -20,6 +21,13 @@ const branches = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
     res.status(200).send(branchLocations);
 });
+exports.branches = branches;
+const pickedBranch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    const branches = yield Branch_1.default.findById(id);
+    res.status(200).send(branches);
+});
+exports.pickedBranch = pickedBranch;
 const createdBranch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { ubication, coordinates } = req.body;
     const newBranch = new Branch_1.default({
@@ -34,4 +42,4 @@ const createdBranch = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         res.status(401).send("No se pudo crear una sucursal");
     }
 });
-module.exports = { branches, createdBranch };
+exports.createdBranch = createdBranch;
