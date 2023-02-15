@@ -1,14 +1,14 @@
 "use strict";
 const mongoose = require("mongoose");
 mongoose
-  .connect("mongodb://localhost/mi-turno-webapp", {
+    .connect("mongodb://localhost/mi-turno-webapp", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     family: 4,
-  })
-  .then(() => {
+})
+    .then(() => {
     console.log("Mongoose is connected");
-  })
-  .catch(() => {
+})
+    .catch(() => {
     console.log("Couldn't connect with mongoose 😦");
-  });
+});
