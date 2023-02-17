@@ -7,4 +7,8 @@ const express_1 = __importDefault(require("express"));
 const user_controller_1 = require("../controllers/user.controller");
 const router = express_1.default.Router();
 router.post("/register", user_controller_1.register);
+router.post("/login", user_controller_1.login);
+router.post("/me", user_controller_1.me);
+router.get("/findAll", user_controller_1.findAllUsers);
+router.get("/findOne/:id", user_controller_1.findOneUser);
 exports.default = router;
