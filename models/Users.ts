@@ -1,31 +1,24 @@
 import mongoose from "mongoose";
+import { IBooking } from "./Booking";
+import { IBranch } from "./Branch";
 const Schema = mongoose.Schema;
 const model = mongoose.model;
 
 export interface IUser extends Document {
-  name: string;
-  lastname: string;
+  fullName: string;
   email: string;
   password: string;
   dni: number;
   usertype: string;
-  branch: Array<[]>;
-  booking: Array<[]>;
+  branch: IBranch;
+  booking: IBooking;
 }
 
 const userSchema = new Schema({
-  name: {
+  fullName: {
     type: String,
     require: true,
   },
-  lastname: {
-    type: String,
-    unique: true,
-    require: true,
-    lowercase: true,
-    trim: true,
-  },
-
   email: {
     type: String,
     require: true,

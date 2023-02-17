@@ -1,12 +1,12 @@
 import { model, Schema, Document } from "mongoose";
+import { IBranch } from "./Branch";
+import { IUser } from "./Users";
 
 export interface IBooking extends Document {
-  branchId: Number;
+  branchId: IBranch['_id'];
   reservationDate: String;
-  date: String;
-  userId: String;
-  name: String;
-  lastName: String;
+  userId: IUser;
+  fullName: String;
   phone: Number;
   email: String;
   available: Boolean;
@@ -20,19 +20,11 @@ const bookingSchema = new Schema({
     type: String,
     require: true,
   },
-  date: {
-    type: String,
-    require: true,
-  },
   userId: {
     type: Schema.Types.ObjectId,
     ref: "Users",
   },
-  name: {
-    type: String,
-    require: true,
-  },
-  lastName: {
+  fullName: {
     type: String,
     require: true,
   },
