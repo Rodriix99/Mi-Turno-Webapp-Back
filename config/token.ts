@@ -1,12 +1,15 @@
 import jwt from "jsonwebtoken";
 import config from "./envs";
+import { IBranch } from "../models/Branch";
+import { IBooking } from "../models/Booking";
 
-interface info {
-  name: string;
-  lastname: string;
+export interface info {
+  fullName: string;
   email: string;
   dni: number;
   usertype: string;
+  branch: Array<IBranch>;
+  booking: Array<IBooking>;
 }
 
 export const generateToken = (payload: info) => {
