@@ -9,7 +9,6 @@ export interface IAdmin extends Document {
     email: string;
     password: string;
     usertype: string;
-   
   }
 
 const adminSchema = new Schema(

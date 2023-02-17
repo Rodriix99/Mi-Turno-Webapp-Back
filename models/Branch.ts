@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
 import { model, Schema, Document } from "mongoose";
+import { IBooking } from "./Booking";
 
 export interface IBranch extends Document {
   name: string,
   location: string;
   phone: string;
   email: string,
-  booking: Array<[]>;
+  booking: IBooking;
 }
 
 const branchSchema = new Schema({
