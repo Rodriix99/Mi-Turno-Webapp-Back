@@ -14,7 +14,7 @@ export const register = async (req: Request, res: Response) => {
     res.send(newUser);
   } catch (err) {
     console.log(err);
-    res.send(400);
+    res.send(401);
   }
 };
 
