@@ -53,3 +53,24 @@ export const me = (req: Request, res: Response) => {
     res.send(401);
   }
 };
+
+export const findAllUsers = async (req: Request, res: Response) => {
+  try {
+    const allUsers = await User.find({});
+    res.send(allUsers);
+  } catch (err) {
+    console.log(err);
+    res.send(401);
+  }
+};
+
+export const findOneUser = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const findUser = await User.findById(id);
+    res.send(findUser);
+  } catch (err) {
+    console.log(err);
+    res.send(401);
+  }
+};
