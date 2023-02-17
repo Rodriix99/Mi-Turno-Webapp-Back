@@ -2,11 +2,19 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const branchSchema = new mongoose_1.Schema({
-    ubication: {
+    name: {
         type: String,
         required: true,
     },
-    coordinates: {
+    location: {
+        type: String,
+        required: true,
+    },
+    phone: {
+        type: String,
+        required: true,
+    },
+    email: {
         type: String,
         required: true,
     },
