@@ -1,12 +1,16 @@
 import { Router } from 'express'
 const router = Router()
 
-import { branches, pickedBranch, createdBranch } from "../controllers/branchControllers";
+import { getBranch, createBranch, updateBranch, deleteBranch } from "../controllers/branchControllers";
   
-  router.get("/", branches, (req, res)=> res.json('getting branches'));
+  router.get("/branches", getBranch, (req, res)=> res.json('getting branches'));
   
-  router.get("/:id", pickedBranch, (req, res)=> res.json('getting a picked branch'));
+  router.get('/branches/:id', getBranch, (req, res)=> res.json('getting single branch'));
+
+  router.post("/branches", createBranch, (req, res)=> res.json('posting a new branch'));
   
-  router.post("/", createdBranch, (req, res)=> res.json('posting a new branch'));
+  router.put('/branches/:id', updateBranch, (req, res)=> res.json('updating a branch'));
+
+  router.delete("/branches/:id", deleteBranch, (req, res)=> res.json('getting a picked branch'));
 
 export default router
