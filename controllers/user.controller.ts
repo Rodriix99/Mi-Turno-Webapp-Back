@@ -46,7 +46,7 @@ export const me = (req: Request, res: Response) => {
   try {
     const { token } = req.body;
     if (!token) return res.sendStatus(400);
-    const user = validateToken(token);
+    const { user }: any = validateToken(token);
     res.send(user);
   } catch (err) {
     console.log(err);

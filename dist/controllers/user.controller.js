@@ -63,7 +63,7 @@ const me = (req, res) => {
         const { token } = req.body;
         if (!token)
             return res.sendStatus(400);
-        const user = (0, token_2.validateToken)(token);
+        const { user } = (0, token_2.validateToken)(token);
         res.send(user);
     }
     catch (err) {
