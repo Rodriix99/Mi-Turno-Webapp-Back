@@ -26,10 +26,9 @@ const getAllBookings = (req, res) => __awaiter(void 0, void 0, void 0, function*
 });
 exports.getAllBookings = getAllBookings;
 const createBooking = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { schedule, date, name, lastName, phone, email } = req.body;
+    const { schedule, date, fullName, phone, email } = req.body;
     const newBooking = new Booking_1.default({
-        name,
-        lastName,
+        fullName,
         email,
         phone,
         date,
