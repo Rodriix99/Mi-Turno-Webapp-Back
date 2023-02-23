@@ -18,11 +18,18 @@ const token_1 = require("../config/token");
 const token_2 = require("../config/token");
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        console.log(req.body);
         const { fullName, email, password, dni, usertype } = req.body;
         const exists = yield Users_1.default.findOne({ email });
         if (exists)
             return res.sendStatus(400);
-        const newUser = new Users_1.default({ fullName, email, password, dni, usertype });
+        const newUser = new Users_1.default({
+            fullName,
+            email,
+            password,
+            dni,
+            usertype,
+        });
         yield newUser.save();
         res.send(newUser);
     }
@@ -46,8 +53,8 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             email: user.email,
             dni: user.dni,
             usertype: user.usertype,
-            branch: user.branch,
             booking: user.booking,
+            branch: user.branch,
         };
         const token = (0, token_1.generateToken)(payload);
         res.send([payload, token]);
