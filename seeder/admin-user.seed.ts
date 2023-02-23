@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import Admin, { IAdmin }  from '../models/Admin';
 import './adminData.json'
 
+//asdfsldfjlskjflasdfj
 // const data = [
 //   {
 //     model: 'Admin',
