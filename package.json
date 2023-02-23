@@ -8,8 +8,7 @@
     "dev": "tsc-watch --onSuccess \"node dist/index.js\"",
     "build": "tsc",
     "init": "nodemon index.ts",
-    "seed": "ts-node ./seeders/admin-user.seed.d.ts"
-
+    "seed": "tsc && node ./dist/seeder/admin-user.seed.js"
   },
   "repository": {
     "type": "git",
@@ -29,7 +28,8 @@
     "mongoose": "^6.9.1",
     "mongoose-seed": "^0.6.0",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

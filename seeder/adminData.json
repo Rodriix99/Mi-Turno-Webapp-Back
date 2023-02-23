@@ -1,0 +1,7 @@
+[{
+    "fullName": "adminUser",
+    "dni": 12345678,
+    "email": "admin@admin.com",
+    "password": "IsAdmin@1234",
+    "usertype": "admin"
+}]
