@@ -8,7 +8,7 @@ export interface info {
   email: string;
   dni: number;
   usertype: string;
-  branch: Array<IBranch>;
+  branch: any;
   booking: Array<IBooking>;
 }
 

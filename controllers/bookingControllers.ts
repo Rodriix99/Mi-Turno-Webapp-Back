@@ -12,10 +12,9 @@ export const getAllBookings = async (req: Request, res: Response) => {
 };
 
 export const createBooking = async (req: Request, res: Response) => {
-  const { schedule, date, name, lastName, phone, email } = req.body;
+  const { schedule, date, fullName, phone, email } = req.body;
   const newBooking = new Booking({
-    name,
-    lastName,
+    fullName,
     email,
     phone,
     date,

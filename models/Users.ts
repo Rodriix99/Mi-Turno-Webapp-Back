@@ -6,13 +6,14 @@ const Schema = mongoose.Schema;
 const model = mongoose.model;
 
 export interface IUser extends Document {
+  _id: string;
   fullName: string;
   email: string;
   password: string;
   dni: number;
   usertype: string;
-  branch: Array<IBranch>;
-  booking: Array<IBooking>;
+  branch: [IBranch["_id"]];
+  booking: [IBooking["_id"]];
   comparePassword: (password: string) => Promise<Boolean>;
 }
 
@@ -46,6 +47,7 @@ const userSchema = new Schema({
       ref: "branch",
     },
   ],
+
   booking: [
     {
       type: Schema.Types.ObjectId,
