@@ -24,5 +24,11 @@ const branchSchema = new mongoose_1.Schema({
             ref: "Booking",
         },
     ],
+    operator: [
+        {
+            type: mongoose_1.Schema.Types.ObjectId,
+            ref: "Users",
+        },
+    ],
 });
 exports.default = (0, mongoose_1.model)("Branch", branchSchema);

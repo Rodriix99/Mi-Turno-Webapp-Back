@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const bookingSchema = new mongoose_1.Schema({
-    branchId: {
+    branch: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "Branch",
     },
@@ -10,7 +10,7 @@ const bookingSchema = new mongoose_1.Schema({
         type: String,
         require: true,
     },
-    userId: {
+    user: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "Users",
     },
