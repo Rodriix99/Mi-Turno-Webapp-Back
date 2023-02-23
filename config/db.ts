@@ -1,4 +1,9 @@
 const mongoose = require("mongoose");
+
+mongoose.set('strictQuery', false);
+
+
+
 mongoose
   .connect("mongodb://localhost/mi-turno-webapp", {
     useNewUrlParser: true,
@@ -6,8 +11,9 @@ mongoose
     family: 4,
   })
   .then(() => {
-    console.log("Mongoose is connected");
+    console.log('Connected to MongoDB');
+    
   })
   .catch(() => {
-    console.log("Couldn't connect with mongoose 😦");
+    console.log("Couldn't connect with mongoose :(");
   });
