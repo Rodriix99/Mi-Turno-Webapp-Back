@@ -1,38 +1,37 @@
-import mongoose from 'mongoose';
-import Admin, { IAdmin }  from '../models/Admin';
-import './adminData.json'
+const mongoose = require("mongoose");
+import Admin from "../models/Admin"
 
-//asdfsldfjlskjflasdfj
-// const data = [
-//   {
-//     model: 'Admin',
-//     documents: adminData
-//   }
-// ];
+export const seedAdmin = async () => {
+  try {
+    await Admin.deleteMany()
 
-// const seedAdmin = async () => {
-//   try {
-//     // Conecta a la base de datos
-//     mongoose.connect('mongodb://localhost:27017/mi-turno-webapp', {
-//       useNewUrlParser: true,
-//       useUnifiedTopology: true,
-//       family: 4
-//     });
+    const admin = new Admin({
+      fullName: "adminUser",
+      dni: 12345678,
+      email: "admin@admin.com",
+      password: "IsAdmin@1234",
+      usertype: "admin"
+    })
 
-//     // Borra todos los documentos existentes en la colección "admins"
-//     await Admin.deleteMany({});
+    await admin.save()
 
-//     // Inserta los datos de admin en la base de datos
-//     await Admin.insertMany(adminData);
+    console.log('Admin seed successful!')
+  } catch (e) {
+    console.error(e)
+  }
+}
 
-//     console.log('Datos de admin insertados correctamente');
-//   } catch (error) {
-//     console.log(`Error al insertar datos de admin: ${error}`);
-//   } finally {
-//     // Desconecta de la base de datos al finalizar
-//     mongoose.disconnect();
-//   }
-// };
+mongoose.set("strictQuery", false);
 
-//  seedAdmin();
-
+mongoose
+  .connect("mongodb://localhost/mi-turno-webapp", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    family: 4,
+  })
+  .then(() => {
+    seedAdmin().then(() => console.log('Admins seeded successfully')).catch(console.error);
+  })
+  .catch(() => {
+    console.log("Couldn't connect with the admin seeder :(");
+  });
