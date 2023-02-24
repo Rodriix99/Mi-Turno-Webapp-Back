@@ -2,12 +2,13 @@
   "name": "mi-turno-webapp-back",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "lib/index.js",
   "scripts": {
     "start": "node dist/index.js",
     "dev": "tsc-watch --onSuccess \"node dist/index.js\"",
     "build": "tsc",
-    "init": "nodemon index.ts"
+    "init": "nodemon index.ts",
+    "seed": "ts-node seeder/admin-user.seed.ts && seeder/branch.seed.ts && seeder/booking.seed.ts"
   },
   "repository": {
     "type": "git",
@@ -20,13 +21,17 @@
   },
   "homepage": "https://github.com/Rodriix99/Mi-Turno-Webapp-Back#readme",
   "dependencies": {
+    "@types/faker": "^6.6.9",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "faker": "^6.6.6",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.1",
+    "mongoose-seed": "^0.6.0",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
@@ -36,6 +41,7 @@
     "@types/mongoose": "^5.11.97",
     "@types/morgan": "^1.9.4",
     "@types/nodemon": "^1.19.2",
+    "dotenv": "^16.0.3",
     "tsc-watch": "^6.0.0",
     "typescript": "^4.9.5"
   }
