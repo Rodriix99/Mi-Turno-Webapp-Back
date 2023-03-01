@@ -8,7 +8,7 @@
     "dev": "tsc-watch --onSuccess \"node dist/index.js\"",
     "build": "tsc",
     "init": "nodemon index.ts",
-    "seed": "ts-node seeder/admin-user.seed.ts && seeder/branch.seed.ts && seeder/booking.seed.ts"
+    "seed": "ts-node seeder/seeders.ts"
   },
   "repository": {
     "type": "git",

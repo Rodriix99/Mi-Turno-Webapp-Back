@@ -33,16 +33,17 @@ const seedAdmin = () => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.seedAdmin = seedAdmin;
-mongoose.set("strictQuery", false);
+/* mongoose.set("strictQuery", false);
+
 mongoose
-    .connect("mongodb://localhost/mi-turno-webapp", {
+  .connect("mongodb://localhost/mi-turno-webapp", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     family: 4,
-})
-    .then(() => {
-    (0, exports.seedAdmin)().then(() => console.log('Admins seeded successfully')).catch(console.error);
-})
-    .catch(() => {
+  })
+  .then(() => {
+    seedAdmin().then(() => console.log('Admins seeded successfully')).catch(console.error);
+  })
+  .catch(() => {
     console.log("Couldn't connect with the admin seeder :(");
-});
+  }); */ 

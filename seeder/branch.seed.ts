@@ -7,14 +7,14 @@ export const seedBranch = async () => {
     await Branch.deleteMany()
 
     const branch = new Branch({
-      name: "BranchUser",
+      name: "Sucursal 1",
       location: "Santa Fe",
-      email: "Branch@Branch.com",
-      phone: "1123465789",
+      email: "Branch1@Branch.com",
+      phone: "1123465789"
       //booking: IBooking,
     //operator: [IUser["_id"]],
-      
-    })
+    }
+  )
 
     await branch.save()
 
@@ -24,7 +24,7 @@ export const seedBranch = async () => {
   }
 }
 
-mongoose.set("strictQuery", false);
+/* mongoose.set("strictQuery", false);
 
 mongoose
   .connect("mongodb://localhost/mi-turno-webapp", {
@@ -37,4 +37,4 @@ mongoose
   })
   .catch(() => {
     console.log("Couldn't connect with the Branch seeder :(");
-  });
+  }); */

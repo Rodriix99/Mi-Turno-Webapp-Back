@@ -19,10 +19,10 @@ const seedBranch = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield Branch_1.default.deleteMany();
         const branch = new Branch_1.default({
-            name: "BranchUser",
+            name: "Sucursal 1",
             location: "Santa Fe",
-            email: "Branch@Branch.com",
-            phone: "1123465789",
+            email: "Branch1@Branch.com",
+            phone: "1123465789"
             //booking: IBooking,
             //operator: [IUser["_id"]],
         });
@@ -34,16 +34,17 @@ const seedBranch = () => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.seedBranch = seedBranch;
-mongoose.set("strictQuery", false);
+/* mongoose.set("strictQuery", false);
+
 mongoose
-    .connect("mongodb://localhost/mi-turno-webapp", {
+  .connect("mongodb://localhost/mi-turno-webapp", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     family: 4,
-})
-    .then(() => {
-    (0, exports.seedBranch)().then(() => console.log('Branches seeded successfully')).catch(console.error);
-})
-    .catch(() => {
+  })
+  .then(() => {
+    seedBranch().then(() => console.log('Branches seeded successfully')).catch(console.error);
+  })
+  .catch(() => {
     console.log("Couldn't connect with the Branch seeder :(");
-});
+  }); */ 

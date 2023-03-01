@@ -23,7 +23,7 @@ export const seedBooking = async () => {
   }
 }
 
-mongoose.set("strictQuery", false);
+/* mongoose.set("strictQuery", false);
 
 mongoose
   .connect("mongodb://localhost/mi-turno-webapp", {
@@ -36,4 +36,4 @@ mongoose
   })
   .catch(() => {
     console.log("Couldn't connect with the booking seeder :(");
-  });
+  }); */
