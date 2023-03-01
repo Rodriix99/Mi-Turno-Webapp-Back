@@ -30,5 +30,13 @@ const branchSchema = new mongoose_1.Schema({
             ref: "Users",
         },
     ],
+    closingTime: {
+        type: String,
+        required: true,
+    },
+    startingTime: {
+        type: String,
+        required: true,
+    },
 });
 exports.default = (0, mongoose_1.model)("Branch", branchSchema);

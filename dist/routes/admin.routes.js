@@ -10,3 +10,4 @@ const router = express_1.default.Router();
 router.post("/createoperator", validations_1.validateAdmin, adminController_1.createOperator);
 router.post("/asignbranch", validations_1.validateAdmin, adminController_1.asignbranch);
 exports.default = router;
+//

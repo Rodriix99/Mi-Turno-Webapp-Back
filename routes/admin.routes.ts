@@ -7,3 +7,4 @@ const router = express.Router();
 router.post("/createoperator", validateAdmin, createOperator);
 router.post("/asignbranch", validateAdmin, asignbranch);
 export default router;
+//
