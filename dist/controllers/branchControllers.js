@@ -12,8 +12,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteBranch = exports.updateBranch = exports.createBranch = exports.getBranch = void 0;
+exports.deleteBranch = exports.updateBranch = exports.createBranch = exports.getBranch = exports.getAllBranch = void 0;
 const Branch_1 = __importDefault(require("../models/Branch"));
+const getAllBranch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield Branch_1.default.find({});
+        if (result) {
+            res.status(200).json(result);
+        }
+        else {
+            res.status(404).json({ message: 'Sucursales no encontradas' });
+        }
+    }
+    catch (error) {
+        res.status(500).json({ message: 'Error al obtener las sucursales' });
+    }
+});
+exports.getAllBranch = getAllBranch;
 const getBranch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const branchId = req.params.id;

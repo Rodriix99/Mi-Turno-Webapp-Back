@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import User from "../models/Users";
 import Branch from "../models/Branch";
+
+
 export const createOperator = async (req: Request, res: Response) => {
   try {
     const { fullName, email, password, dni, usertype } = req.body;

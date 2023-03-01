@@ -1,6 +1,22 @@
 import Branch from "../models/Branch";
 import { Request, Response } from "express";
 
+export const getAllBranch = async (req: Request, res: Response): Promise<void> => {
+  
+  try {
+    
+    const result = await Branch.find({});
+
+    if (result) {
+      res.status(200).json(result);
+    } else {
+      res.status(404).json({ message: 'Sucursales no encontradas' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener las sucursales' });
+  }
+};
+
 export const getBranch = async (req: Request, res: Response): Promise<void> => {
   
   try {
