@@ -12,27 +12,27 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.seedAdmin = void 0;
+exports.seedBooking = void 0;
 const mongoose = require("mongoose");
-const Admin_1 = __importDefault(require("../models/Admin"));
-const seedAdmin = () => __awaiter(void 0, void 0, void 0, function* () {
+const Booking_1 = __importDefault(require("../models/Booking"));
+const seedBooking = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield Admin_1.default.deleteMany();
-        const admin = new Admin_1.default({
-            fullName: "adminUser",
-            dni: 12345678,
-            email: "admin@admin.com",
-            password: "IsAdmin@1234",
-            usertype: "admin"
+        yield Booking_1.default.deleteMany();
+        const booking = new Booking_1.default({
+            //branchId: IBranch["_id"],
+            reservationDate: "12/07/23 13:00hs",
+            //userId: IUser["_id"],
+            email: "Turnos@Booking.com",
+            password: "IsBooking@1234",
         });
-        yield admin.save();
-        console.log('Admin seed successful!');
+        yield booking.save();
+        console.log('Booking seed successful!');
     }
     catch (e) {
         console.error(e);
     }
 });
-exports.seedAdmin = seedAdmin;
+exports.seedBooking = seedBooking;
 /* mongoose.set("strictQuery", false);
 
 mongoose
@@ -42,8 +42,8 @@ mongoose
     family: 4,
   })
   .then(() => {
-    seedAdmin().then(() => console.log('Admins seeded successfully')).catch(console.error);
+    seedBooking().then(() => console.log('booking seeded successfully')).catch(console.error);
   })
   .catch(() => {
-    console.log("Couldn't connect with the admin seeder :(");
+    console.log("Couldn't connect with the booking seeder :(");
   }); */ 
