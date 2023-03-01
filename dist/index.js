@@ -19,5 +19,5 @@ app.get("/", (req, res) => {
 });
 app.use("/api", index_1.default);
 app.listen(port, () => {
-    console.log("Listening on port 3001");
+    console.log(`Listening on port ${port}`);
 });

@@ -12,27 +12,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.seedAdmin = void 0;
+exports.seedBranch = void 0;
 const mongoose = require("mongoose");
-const Admin_1 = __importDefault(require("../models/Admin"));
-const seedAdmin = () => __awaiter(void 0, void 0, void 0, function* () {
+const Branch_1 = __importDefault(require("../models/Branch"));
+const seedBranch = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield Admin_1.default.deleteMany();
-        const admin = new Admin_1.default({
-            fullName: "adminUser",
-            dni: 12345678,
-            email: "admin@admin.com",
-            password: "IsAdmin@1234",
-            usertype: "admin"
+        yield Branch_1.default.deleteMany();
+        const branch = new Branch_1.default({
+            name: "Sucursal 1",
+            location: "Santa Fe",
+            email: "Branch1@Branch.com",
+            phone: "1123465789"
+            //booking: IBooking,
+            //operator: [IUser["_id"]],
         });
-        yield admin.save();
-        console.log('Admin seed successful!');
+        yield branch.save();
+        console.log('Branch seed successful!');
     }
     catch (e) {
         console.error(e);
     }
 });
-exports.seedAdmin = seedAdmin;
+exports.seedBranch = seedBranch;
 /* mongoose.set("strictQuery", false);
 
 mongoose
@@ -42,8 +43,8 @@ mongoose
     family: 4,
   })
   .then(() => {
-    seedAdmin().then(() => console.log('Admins seeded successfully')).catch(console.error);
+    seedBranch().then(() => console.log('Branches seeded successfully')).catch(console.error);
   })
   .catch(() => {
-    console.log("Couldn't connect with the admin seeder :(");
+    console.log("Couldn't connect with the Branch seeder :(");
   }); */ 

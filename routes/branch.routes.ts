@@ -2,13 +2,14 @@ import { Router } from "express";
 const router = Router();
 
 import {
+  getAllBranch,
   getBranch,
   createBranch,
   updateBranch,
   deleteBranch,
 } from "../controllers/branchControllers";
 
-router.get("/branches", getBranch, (req, res) => res.json("getting branches"));
+router.get("/branches", getAllBranch, (req, res) => res.json("getting branches"));
 
 router.get("/branches/:id", getBranch, (req, res) =>
   res.json("getting single branch")
