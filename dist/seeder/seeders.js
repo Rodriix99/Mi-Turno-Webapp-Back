@@ -5,6 +5,7 @@ const admin_user_seed_1 = require("./admin-user.seed");
 const booking_seed_1 = require("./booking.seed");
 const branch_seed_1 = require("./branch.seed");
 mongoose.set("strictQuery", false);
+//conectar al seed
 mongoose
     .connect("mongodb://localhost/mi-turno-webapp", {
     useNewUrlParser: true,
