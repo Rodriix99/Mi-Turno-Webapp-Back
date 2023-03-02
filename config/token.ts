@@ -8,8 +8,8 @@ export interface info {
   email: string;
   dni: number;
   usertype: string;
-  branch: any;
-  booking: Array<IBooking>;
+  branch?: any;
+  booking?: Array<IBooking>;
 }
 
 export const generateToken = (payload: info) => {

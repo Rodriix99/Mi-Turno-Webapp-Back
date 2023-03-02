@@ -16,6 +16,7 @@ exports.findOneUser = exports.findAllUsers = exports.me = exports.login = export
 const Users_1 = __importDefault(require("../models/Users"));
 const token_1 = require("../config/token");
 const token_2 = require("../config/token");
+const Admin_1 = __importDefault(require("../models/Admin"));
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         console.log(req.body);
@@ -35,7 +36,7 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
     catch (err) {
         console.log(err);
-        res.send(401);
+        res.sendStatus(401);
     }
 });
 exports.register = register;
@@ -43,21 +44,38 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email, password } = req.body;
         const user = yield Users_1.default.findOne({ email });
-        if (!user)
+        const admin = yield Admin_1.default.findOne({ email });
+        const result = [user, admin];
+        const resultado = result.filter((e) => e !== null);
+        console.log(resultado[0]);
+        if (!resultado[0])
             return res.sendStatus(400);
-        const isMatch = yield user.comparePassword(password);
+        const isMatch = yield resultado[0].comparePassword(password);
         if (!isMatch)
             return res.sendStatus(400);
-        const payload = {
-            fullName: user.fullName,
-            email: user.email,
-            dni: user.dni,
-            usertype: user.usertype,
-            booking: user.booking,
-            branch: user.branch,
-        };
-        const token = (0, token_1.generateToken)(payload);
-        res.send([payload, token]);
+        if (resultado[0].userType === "user" ||
+            resultado[0].userType === "operator") {
+            const payload = {
+                fullName: resultado[0].fullName,
+                email: resultado[0].email,
+                dni: resultado[0].dni,
+                usertype: resultado[0].usertype,
+                booking: resultado[0].booking,
+                branch: resultado[0].branch,
+            };
+            const token = (0, token_1.generateToken)(payload);
+            res.send([payload, token]);
+        }
+        else {
+            const payload = {
+                fullName: resultado[0].fullName,
+                email: resultado[0].email,
+                dni: resultado[0].dni,
+                usertype: resultado[0].usertype,
+            };
+            const token = (0, token_1.generateToken)(payload);
+            res.send([payload, token]);
+        }
     }
     catch (err) {
         console.log(err);

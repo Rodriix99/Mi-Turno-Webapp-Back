@@ -22,12 +22,14 @@ const seedBranch = () => __awaiter(void 0, void 0, void 0, function* () {
             name: "Sucursal 1",
             location: "Santa Fe",
             email: "Branch1@Branch.com",
-            phone: "1123465789"
+            phone: "1123465789",
+            startingTime: "07:00",
+            closingTime: "21:00",
             //booking: IBooking,
             //operator: [IUser["_id"]],
         });
         yield branch.save();
-        console.log('Branch seed successful!');
+        console.log("Branch seed successful!");
     }
     catch (e) {
         console.error(e);
@@ -47,4 +49,4 @@ mongoose
   })
   .catch(() => {
     console.log("Couldn't connect with the Branch seeder :(");
-  }); */ 
+  }); */

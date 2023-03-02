@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const Schema = mongoose_1.default.Schema;
-const model = mongoose_1.default.model;
 const userSchema = new Schema({
     fullName: {
         type: String,
@@ -65,4 +64,5 @@ userSchema.methods.comparePassword = function (password) {
         return yield bcrypt_1.default.compare(password, this.password);
     });
 };
-exports.default = model("Users", userSchema);
+const User = mongoose_1.default.model("Users", userSchema);
+exports.default = User;
