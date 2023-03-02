@@ -1,5 +1,5 @@
 import User from "../models/Users";
-//operator seed
+//seed operadores
 const operadores = [
   {
     fullName: "operador1",

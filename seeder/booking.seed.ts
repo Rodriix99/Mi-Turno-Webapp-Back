@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 import Booking from "../models/Booking";
 
+//seed turnos
 const turnos = [
   {
     reservationDate: "13:00hs",
