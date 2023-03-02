@@ -1,4 +1,5 @@
 import User from "../models/Users";
+//seed operadores
 const operadores = [
   {
     fullName: "operador1",

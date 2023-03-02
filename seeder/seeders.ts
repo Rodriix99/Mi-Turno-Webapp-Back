@@ -5,7 +5,7 @@ import { seedBranch } from "./branch.seed";
 import { seedOperator } from "./operator-user.seed";
 
 mongoose.set("strictQuery", false);
-
+//seeders
 mongoose
   .connect("mongodb://localhost/mi-turno-webapp", {
     useNewUrlParser: true,
