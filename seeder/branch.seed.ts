@@ -1,28 +1,54 @@
-const mongoose = require("mongoose");
-
 import Branch from "../models/Branch";
+const branches = [
+  {
+    name: "Sucursal 1",
+    location: "Santa Fe",
+    email: "Branch1@Branch.com",
+    phone: "1123465789",
+    closingTime: "21:00",
+    startingTime: "07:00",
+  },
+  {
+    name: "Sucursal 2",
+    location: "Salta",
+    email: "Branch2@Branch.com",
+    phone: "123123123123",
+    closingTime: "21:00",
+    startingTime: "07:00",
+  },
+  {
+    name: "Sucursal 3",
+    location: "Margo",
+    email: "Branch3@Branch.com",
+    phone: "121111111111",
+    closingTime: "21:00",
+    startingTime: "07:00",
+  },
+  {
+    name: "Sucursal 4",
+    location: "Jujuy",
+    email: "Branch4@Branch.com",
+    phone: "112313",
+    closingTime: "21:00",
+    startingTime: "07:00",
+  },
+];
 
 export const seedBranch = async () => {
   try {
-    await Branch.deleteMany()
-
-    const branch = new Branch({
-      name: "Sucursal 1",
-      location: "Santa Fe",
-      email: "Branch1@Branch.com",
-      phone: "1123465789"
-      //booking: IBooking,
-    //operator: [IUser["_id"]],
+    await Branch.deleteMany();
+    async function createBranch() {
+      for (let i = 0; i < branches.length; i++) {
+        let branch = new Branch(branches[i]);
+        branch.save();
+      }
     }
-  )
-
-    await branch.save()
-
-    console.log('Branch seed successful!')
+    createBranch();
+    console.log("Branch seed successful!");
   } catch (e) {
-    console.error(e)
+    console.error(e);
   }
-}
+};
 
 /* mongoose.set("strictQuery", false);
 

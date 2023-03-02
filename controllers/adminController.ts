@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import User from "../models/Users";
 import Branch from "../models/Branch";
-
+import Admin from "../models/Admin";
 
 export const createOperator = async (req: Request, res: Response) => {
   try {
@@ -27,5 +27,20 @@ export const asignbranch = async (req: Request, res: Response) => {
   } catch (err) {
     console.log(err);
     res.sendStatus(400);
+  }
+};
+
+export const registerAdmin = async (req: Request, res: Response) => {
+  try {
+    const { fullName, dni, email, password, usertype } = req.body;
+
+    const exists = await Admin.findOne({ email });
+    if (exists) return res.sendStatus(400);
+    const admin = new Admin({ fullName, dni, email, password, usertype });
+    await admin.save();
+    res.send(admin);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(401);
   }
 };

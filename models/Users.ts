@@ -3,7 +3,6 @@ import { IBooking } from "./Booking";
 import { IBranch } from "./Branch";
 import bcrypt from "bcrypt";
 const Schema = mongoose.Schema;
-const model = mongoose.model;
 
 export interface IUser extends Document {
   _id: string;
@@ -70,4 +69,5 @@ userSchema.methods.comparePassword = async function (
   return await bcrypt.compare(password, this.password);
 };
 
-export default model<IUser>("Users", userSchema);
+const User = mongoose.model<IUser>("Users", userSchema);
+export default User;

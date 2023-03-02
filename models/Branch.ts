@@ -9,6 +9,8 @@ export interface IBranch extends Document {
   email: string;
   booking: IBooking;
   operator: [IUser["_id"]];
+  closingTime: string;
+  startingTime: string;
 }
 
 const branchSchema = new Schema({
@@ -40,6 +42,15 @@ const branchSchema = new Schema({
       ref: "Users",
     },
   ],
+  closingTime: {
+    type: String,
+    required: true,
+  },
+  startingTime: {
+    type: String,
+    required: true,
+  },
 });
 
 export default model<IBranch>("Branch", branchSchema);
+//
