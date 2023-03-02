@@ -40,3 +40,4 @@ const branchSchema = new mongoose_1.Schema({
     },
 });
 exports.default = (0, mongoose_1.model)("Branch", branchSchema);
+//

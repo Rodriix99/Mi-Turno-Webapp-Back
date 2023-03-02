@@ -12,9 +12,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.asignbranch = exports.createOperator = void 0;
+exports.registerAdmin = exports.asignbranch = exports.createOperator = void 0;
 const Users_1 = __importDefault(require("../models/Users"));
 const Branch_1 = __importDefault(require("../models/Branch"));
+const Admin_1 = __importDefault(require("../models/Admin"));
 const createOperator = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { fullName, email, password, dni, usertype } = req.body;
@@ -43,3 +44,19 @@ const asignbranch = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.asignbranch = asignbranch;
+const registerAdmin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { fullName, dni, email, password, usertype } = req.body;
+        const exists = yield Admin_1.default.findOne({ email });
+        if (exists)
+            return res.sendStatus(400);
+        const admin = new Admin_1.default({ fullName, dni, email, password, usertype });
+        yield admin.save();
+        res.send(admin);
+    }
+    catch (err) {
+        console.log(err);
+        res.sendStatus(401);
+    }
+});
+exports.registerAdmin = registerAdmin;
