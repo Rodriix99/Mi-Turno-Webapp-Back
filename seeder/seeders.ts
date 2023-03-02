@@ -6,7 +6,6 @@ import { seedOperator } from "./operator-user.seed";
 
 mongoose.set("strictQuery", false);
 
-//conectar al seeder
 mongoose
   .connect("mongodb://localhost/mi-turno-webapp", {
     useNewUrlParser: true,
