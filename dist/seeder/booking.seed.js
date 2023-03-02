@@ -19,14 +19,12 @@ const seedBooking = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield Booking_1.default.deleteMany();
         const booking = new Booking_1.default({
-            //branchId: IBranch["_id"],
             reservationDate: "12/07/23 13:00hs",
-            //userId: IUser["_id"],
             email: "Turnos@Booking.com",
             password: "IsBooking@1234",
         });
         yield booking.save();
-        console.log('Booking seed successful!');
+        console.log("Booking seed successful!");
     }
     catch (e) {
         console.error(e);
@@ -46,4 +44,4 @@ mongoose
   })
   .catch(() => {
     console.log("Couldn't connect with the booking seeder :(");
-  }); */ 
+  }); */

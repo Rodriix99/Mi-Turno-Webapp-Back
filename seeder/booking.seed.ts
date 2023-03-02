@@ -1,27 +1,23 @@
 const mongoose = require("mongoose");
 import Booking from "../models/Booking";
 
-
 export const seedBooking = async () => {
   try {
-    await Booking.deleteMany()
+    await Booking.deleteMany();
 
     const booking = new Booking({
-      //branchId: IBranch["_id"],
-    reservationDate: "12/07/23 13:00hs",
-      //userId: IUser["_id"],
+      reservationDate: "12/07/23 13:00hs",
       email: "Turnos@Booking.com",
       password: "IsBooking@1234",
-      
-    })
+    });
 
-    await booking.save()
+    await booking.save();
 
-    console.log('Booking seed successful!')
+    console.log("Booking seed successful!");
   } catch (e) {
-    console.error(e)
+    console.error(e);
   }
-}
+};
 
 /* mongoose.set("strictQuery", false);
 
