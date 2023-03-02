@@ -13,22 +13,53 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.seedBranch = void 0;
-const mongoose = require("mongoose");
 const Branch_1 = __importDefault(require("../models/Branch"));
+const branches = [
+    {
+        name: "Sucursal 1",
+        location: "Santa Fe",
+        email: "Branch1@Branch.com",
+        phone: "1123465789",
+        closingTime: "21:00",
+        startingTime: "07:00",
+    },
+    {
+        name: "Sucursal 2",
+        location: "Salta",
+        email: "Branch2@Branch.com",
+        phone: "123123123123",
+        closingTime: "21:00",
+        startingTime: "07:00",
+    },
+    {
+        name: "Sucursal 3",
+        location: "Margo",
+        email: "Branch3@Branch.com",
+        phone: "121111111111",
+        closingTime: "21:00",
+        startingTime: "07:00",
+    },
+    {
+        name: "Sucursal 4",
+        location: "Jujuy",
+        email: "Branch4@Branch.com",
+        phone: "112313",
+        closingTime: "21:00",
+        startingTime: "07:00",
+    },
+];
 const seedBranch = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield Branch_1.default.deleteMany();
-        const branch = new Branch_1.default({
-            name: "Sucursal 1",
-            location: "Santa Fe",
-            email: "Branch1@Branch.com",
-            phone: "1123465789",
-            startingTime: "07:00",
-            closingTime: "21:00",
-            //booking: IBooking,
-            //operator: [IUser["_id"]],
-        });
-        yield branch.save();
+        function createBranch() {
+            return __awaiter(this, void 0, void 0, function* () {
+                for (let i = 0; i < branches.length; i++) {
+                    let branch = new Branch_1.default(branches[i]);
+                    branch.save();
+                }
+            });
+        }
+        createBranch();
         console.log("Branch seed successful!");
     }
     catch (e) {
