@@ -18,25 +18,25 @@ const Schema = mongoose_1.default.Schema;
 const userSchema = new Schema({
     fullName: {
         type: String,
-        require: true,
+        required: true,
     },
     email: {
         type: String,
-        require: true,
+        required: true,
     },
     password: {
         type: String,
-        require: true,
+        required: true,
     },
     dni: {
         type: Number,
-        require: true,
+        required: true,
         unique: true,
     },
     usertype: {
         type: String,
         enum: ["admin", "operator", "user"],
-        require: true,
+        required: true,
     },
     branch: [
         {
