@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.seedOperator = void 0;
 const Users_1 = __importDefault(require("../models/Users"));
+//seed operadores
 const operadores = [
     {
         fullName: "operador1",
