@@ -18,7 +18,7 @@ const bookingSchema = new Schema({
   },
   reservationDate: {
     type: String,
-    require: true,
+    required: true,
   },
   user: {
     type: Schema.Types.ObjectId,
@@ -26,15 +26,15 @@ const bookingSchema = new Schema({
   },
   fullName: {
     type: String,
-    require: true,
+    required: true,
   },
   phone: {
     type: Number,
-    require: true,
+    required: true,
   },
   email: {
     type: String,
-    require: true,
+    required: true,
     lowercase: true,
     trim: true,
   },

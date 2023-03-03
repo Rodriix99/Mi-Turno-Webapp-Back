@@ -20,7 +20,8 @@ const Admin_1 = __importDefault(require("../models/Admin"));
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         console.log(req.body);
-        const { fullName, email, password, dni, usertype } = req.body;
+        const { fullName, email, password, dni } = req.body;
+        const usertype = "user";
         const exists = yield Users_1.default.findOne({ email });
         if (exists)
             return res.sendStatus(400);

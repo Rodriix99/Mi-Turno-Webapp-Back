@@ -9,7 +9,8 @@ import Admin from "../models/Admin";
 export const register = async (req: Request, res: Response) => {
   try {
     console.log(req.body);
-    const { fullName, email, password, dni, usertype } = req.body;
+    const { fullName, email, password, dni } = req.body;
+    const usertype = "user";
     const exists = await User.findOne({ email });
     if (exists) return res.sendStatus(400);
     const newUser = new User({
