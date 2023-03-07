@@ -16,16 +16,15 @@ exports.deleteBranch = exports.updateBranch = exports.createBranch = exports.get
 const Branch_1 = __importDefault(require("../models/Branch"));
 const getAllBranch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const result = yield Branch_1.default.find({});
-        if (result) {
-            res.status(200).json(result);
-        }
-        else {
-            res.status(404).json({ message: "Sucursales no encontradas" });
-        }
+        const { page } = req.params;
+        const branches = yield Branch_1.default.find()
+            .limit(10)
+            .skip((page - 1) * 10);
+        res.send(branches);
     }
-    catch (error) {
-        res.status(500).json({ message: "Error al obtener las sucursales" });
+    catch (err) {
+        console.log(err);
+        res.sendStatus(400);
     }
 });
 exports.getAllBranch = getAllBranch;

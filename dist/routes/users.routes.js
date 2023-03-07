@@ -12,4 +12,7 @@ router.post("/login", user_controller_1.login);
 router.post("/me", user_controller_1.me);
 router.post("/findAll", validations_1.validateAdminAndOp, user_controller_1.findAllUsers);
 router.post("/findOne/:id", validations_1.validateAdminAndOp, user_controller_1.findOneUser);
+router.post("/test", (req, res) => {
+    res.send("Hello everybody");
+});
 exports.default = router;

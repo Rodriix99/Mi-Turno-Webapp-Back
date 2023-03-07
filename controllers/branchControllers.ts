@@ -6,15 +6,15 @@ export const getAllBranch = async (
   res: Response
 ): Promise<void> => {
   try {
-    const result = await Branch.find({});
+    const { page }: any = req.params;
 
-    if (result) {
-      res.status(200).json(result);
-    } else {
-      res.status(404).json({ message: "Sucursales no encontradas" });
-    }
-  } catch (error) {
-    res.status(500).json({ message: "Error al obtener las sucursales" });
+    const branches = await Branch.find()
+      .limit(10)
+      .skip((page - 1) * 10);
+    res.send(branches);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
   }
 };
 
