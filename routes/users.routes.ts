@@ -7,6 +7,8 @@ import {
   findOneUser,
   updateUser,
 } from "../controllers/user.controller";
+import { Request, Response } from "express";
+
 import { validateAdminAndOp } from "../middlewares/validations";
 const router = express.Router();
 

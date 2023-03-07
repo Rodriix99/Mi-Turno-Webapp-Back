@@ -9,7 +9,7 @@ import {
   deleteBranch,
 } from "../controllers/branchControllers";
 
-router.get("/branches", getAllBranch, (req, res) => res.json("getting branches"));
+router.get("/branches/:page", getAllBranch);
 
 router.get("/branches/:id", getBranch, (req, res) =>
   res.json("getting single branch")
