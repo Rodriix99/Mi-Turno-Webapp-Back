@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findOneUser = exports.findAllUsers = exports.me = exports.login = exports.register = void 0;
+exports.updateUser = exports.findOneUser = exports.findAllUsers = exports.me = exports.login = exports.register = void 0;
 const Users_1 = __importDefault(require("../models/Users"));
 const token_1 = require("../config/token");
 const token_2 = require("../config/token");
@@ -57,9 +57,11 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         if (resultado[0].userType === "user" ||
             resultado[0].userType === "operator") {
             const payload = {
+                id: resultado[0]._id,
                 fullName: resultado[0].fullName,
                 email: resultado[0].email,
                 dni: resultado[0].dni,
+                phone: resultado[0].phone,
                 usertype: resultado[0].usertype,
                 booking: resultado[0].booking,
                 branch: resultado[0].branch,
@@ -69,9 +71,11 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         }
         else {
             const payload = {
+                id: resultado[0]._id,
                 fullName: resultado[0].fullName,
                 email: resultado[0].email,
                 dni: resultado[0].dni,
+                phone: resultado[0].phone,
                 usertype: resultado[0].usertype,
             };
             const token = (0, token_1.generateToken)(payload);
@@ -84,19 +88,31 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.login = login;
-const me = (req, res) => {
+const me = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { token } = req.body;
         if (!token)
             return res.sendStatus(400);
         const { user } = (0, token_2.validateToken)(token);
-        res.send(user);
+        console.log("EsTO ES EL USER!!!!!!!! ", user);
+        const updatedUser = yield Users_1.default.findById(user.id);
+        console.log("ESTO ES EL UPDATEDUSER la putaaaa", updatedUser);
+        const payload = {
+            id: updatedUser === null || updatedUser === void 0 ? void 0 : updatedUser._id,
+            fullName: updatedUser === null || updatedUser === void 0 ? void 0 : updatedUser.fullName,
+            email: updatedUser === null || updatedUser === void 0 ? void 0 : updatedUser.email,
+            dni: updatedUser === null || updatedUser === void 0 ? void 0 : updatedUser.dni,
+            phone: updatedUser === null || updatedUser === void 0 ? void 0 : updatedUser.phone,
+            usertype: updatedUser === null || updatedUser === void 0 ? void 0 : updatedUser.usertype,
+        };
+        res.send(payload);
+        console.log("estO  ES EL PAYLOAD", payload);
     }
     catch (err) {
         console.log(err);
         res.send(401);
     }
-};
+});
 exports.me = me;
 const findAllUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -121,3 +137,20 @@ const findOneUser = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.findOneUser = findOneUser;
+const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    /* const { id } = req.params; */
+    const { _id, fullName, email, dni } = req.body;
+    console.log(req.body);
+    try {
+        const user = yield Users_1.default.findById(_id);
+        yield (user === null || user === void 0 ? void 0 : user.updateOne({ fullName, email, dni }));
+        yield (user === null || user === void 0 ? void 0 : user.save());
+        //console.log(user);
+        res.json(user);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Error updating user" });
+    }
+});
+exports.updateUser = updateUser;

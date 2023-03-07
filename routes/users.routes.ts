@@ -5,6 +5,7 @@ import {
   me,
   findAllUsers,
   findOneUser,
+  updateUser,
 } from "../controllers/user.controller";
 import { Request, Response } from "express";
 
@@ -16,7 +17,6 @@ router.post("/login", login);
 router.post("/me", me);
 router.post("/findAll", validateAdminAndOp, findAllUsers);
 router.post("/findOne/:id", validateAdminAndOp, findOneUser);
-router.post("/test", (req: Request, res: Response) => {
-  res.send("Hello everybody");
-});
+router.put("/updateUser", updateUser);
+
 export default router;
