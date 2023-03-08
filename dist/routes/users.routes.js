@@ -33,4 +33,5 @@ router.post("/sendmail", (req, res) => __awaiter(void 0, void 0, void 0, functio
     });
     res.sendStatus(200);
 }));
+router.put("/updateUser", user_controller_1.updateUser);
 exports.default = router;

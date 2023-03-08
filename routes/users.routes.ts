@@ -5,7 +5,9 @@ import {
   me,
   findAllUsers,
   findOneUser,
+  updateUser,
 } from "../controllers/user.controller";
+
 import { validateAdminAndOp } from "../middlewares/validations";
 import { transporter } from "../config/nodemailer";
 const router = express.Router();
@@ -26,4 +28,6 @@ router.post("/sendmail", async (req: Request, res: Response) => {
   });
   res.sendStatus(200);
 });
+router.put("/updateUser", updateUser);
+
 export default router;
