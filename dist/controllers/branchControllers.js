@@ -12,8 +12,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteBranch = exports.updateBranch = exports.createBranch = exports.getBranch = exports.getAllBranch = void 0;
+exports.deleteBranch = exports.updateBranch = exports.createBranch = exports.getBranch = exports.getAllBranch = exports.getAllBranches = void 0;
 const Branch_1 = __importDefault(require("../models/Branch"));
+const getAllBranches = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const allBranches = yield Branch_1.default.find({});
+        res.send(allBranches);
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
+exports.getAllBranches = getAllBranches;
 const getAllBranch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { page } = req.params;

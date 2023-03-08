@@ -1,6 +1,17 @@
 import Branch from "../models/Branch";
 import { Request, Response } from "express";
 
+
+export const getAllBranches =async (req: Request, res: Response): Promise<void> => {
+  try {
+    const allBranches = await Branch.find({});
+    res.send(allBranches);
+  } catch (error) {
+    console.log(error);
+
+  }
+}
+
 export const getAllBranch = async (
   req: Request,
   res: Response
