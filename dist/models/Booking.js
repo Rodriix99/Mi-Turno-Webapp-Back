@@ -8,7 +8,7 @@ const bookingSchema = new mongoose_1.Schema({
     },
     reservationDate: {
         type: String,
-        require: true,
+        required: true,
     },
     user: {
         type: mongoose_1.Schema.Types.ObjectId,
@@ -16,15 +16,15 @@ const bookingSchema = new mongoose_1.Schema({
     },
     fullName: {
         type: String,
-        require: true,
+        required: true,
     },
     phone: {
         type: Number,
-        require: true,
+        required: true,
     },
     email: {
         type: String,
-        require: true,
+        required: true,
         lowercase: true,
         trim: true,
     },

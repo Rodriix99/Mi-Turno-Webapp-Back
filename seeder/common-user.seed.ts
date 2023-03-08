@@ -1,5 +1,4 @@
 import User from "../models/Users";
-
 const users = [
   {
     fullName: "Armando Bronca Segura",

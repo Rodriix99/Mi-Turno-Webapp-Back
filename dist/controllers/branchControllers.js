@@ -16,16 +16,15 @@ exports.deleteBranch = exports.updateBranch = exports.createBranch = exports.get
 const Branch_1 = __importDefault(require("../models/Branch"));
 const getAllBranch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const result = yield Branch_1.default.find({});
-        if (result) {
-            res.status(200).json(result);
-        }
-        else {
-            res.status(404).json({ message: 'Sucursales no encontradas' });
-        }
+        const { page } = req.params;
+        const branches = yield Branch_1.default.find()
+            .limit(10)
+            .skip((page - 1) * 10);
+        res.send(branches);
     }
-    catch (error) {
-        res.status(500).json({ message: 'Error al obtener las sucursales' });
+    catch (err) {
+        console.log(err);
+        res.sendStatus(400);
     }
 });
 exports.getAllBranch = getAllBranch;
@@ -37,24 +36,32 @@ const getBranch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             res.status(200).json(result);
         }
         else {
-            res.status(404).json({ message: 'Sucursal no encontrada' });
+            res.status(404).json({ message: "Sucursal no encontrada" });
         }
     }
     catch (error) {
-        res.status(500).json({ message: 'Error al obtener la sucursal' });
+        res.status(500).json({ message: "Error al obtener la sucursal" });
     }
 });
 exports.getBranch = getBranch;
 const createBranch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { name, location, phone, email } = req.body;
+    const { name, location, phone, email, closingTime, startingTime } = req.body;
+    console.log(req.body);
     try {
-        const branch = new Branch_1.default({ name, location, phone, email });
+        const branch = new Branch_1.default({
+            name,
+            location,
+            phone,
+            email,
+            closingTime,
+            startingTime,
+        });
         yield branch.save();
         res.status(201).json(branch);
     }
     catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Error creating branch' });
+        res.status(500).json({ message: "Error creating branch" });
     }
 });
 exports.createBranch = createBranch;
@@ -64,7 +71,7 @@ const updateBranch = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     try {
         const branch = yield Branch_1.default.findById(id);
         if (!branch) {
-            res.status(404).json({ message: 'Branch not found' });
+            res.status(404).json({ message: "Branch not found" });
             return;
         }
         branch.name = name;
@@ -76,7 +83,7 @@ const updateBranch = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
     catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Error updating branch' });
+        res.status(500).json({ message: "Error updating branch" });
     }
 });
 exports.updateBranch = updateBranch;
@@ -85,14 +92,14 @@ const deleteBranch = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     try {
         const branch = yield Branch_1.default.findByIdAndDelete(id);
         if (!branch) {
-            res.status(404).json({ message: 'Branch not found' });
+            res.status(404).json({ message: "Branch not found" });
             return;
         }
         res.json(branch);
     }
     catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Error deleting branch' });
+        res.status(500).json({ message: "Error deleting branch" });
     }
 });
 exports.deleteBranch = deleteBranch;
