@@ -32,6 +32,38 @@ const branches = [
     closingTime: "21:00",
     startingTime: "07:00",
   },
+  {
+    name: "Sucursal 5",
+    location: "La Rioja",
+    email: "Branch5@Branch.com",
+    phone: "987654987",
+    closingTime: "21:00",
+    startingTime: "07:00",
+  },
+  {
+    name: "Sucursal 6",
+    location: "Entre Ríos",
+    email: "Branch6@Branch.com",
+    phone: "1987321654",
+    closingTime: "21:00",
+    startingTime: "07:00",
+  },
+  {
+    name: "Sucursal 7",
+    location: "Margo",
+    email: "Branch7@Branch.com",
+    phone: "7777998856",
+    closingTime: "21:00",
+    startingTime: "07:00",
+  },
+  {
+    name: "Sucursal 8",
+    location: "Jujuy",
+    email: "Branch8@Branch.com",
+    phone: "1888846888",
+    closingTime: "21:00",
+    startingTime: "07:00",
+  },
 ];
 
 export const seedBranch = async () => {
