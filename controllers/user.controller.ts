@@ -81,10 +81,10 @@ export const me = async (req: Request, res: Response) => {
     const { token } = req.body;
     if (!token) return res.sendStatus(400);
     const { user }: any = validateToken(token);
-    console.log("EsTO ES EL USER!!!!!!!! ", user);
+    //console.log("ESTO ES EL USER!!!!!!!! ", user);
     
     const updatedUser = await User.findById(user.id);
-    console.log("ESTO ES EL UPDATEDUSER la putaaaa", updatedUser);
+    //console.log("ESTO ES EL UPDATEDUSER", updatedUser);
     
     const payload = {
       id: updatedUser?._id,
@@ -95,7 +95,7 @@ export const me = async (req: Request, res: Response) => {
       usertype: updatedUser?.usertype,
     };
     res.send(payload);
-    console.log("estO  ES EL PAYLOAD", payload);
+    //console.log("ESTO  ES EL PAYLOAD", payload);
   } catch (err) {
     console.log(err);
     res.send(401);
@@ -126,14 +126,18 @@ export const findOneUser = async (req: Request, res: Response) => {
 export const updateUser = async (
   req: Request,
   res: Response
-): Promise<void> => {
-  /* const { id } = req.params; */
-  const { _id, fullName, email, dni } = req.body;
-  console.log(req.body);
-  
+) => {
   try {
+  
+  console.log(" REQ.BODY", req.body);
+  const { _id, fullName, email, dni, phone } = req.body;
+  if (_id === "" || fullName === "" || email === "" || dni === "" || phone === "") {
+    return res.sendStatus(400)
+  }
+  //console.log("ESTO ES REQ.BODY NENEEE",req.body);
+  
     const user = await User.findById(_id);
-    await user?.updateOne({ fullName, email, dni });
+    await user?.updateOne({ fullName, email, dni, phone });
     await user?.save();
     //console.log(user);
 
