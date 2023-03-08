@@ -1,11 +1,12 @@
 const nodemailer = require("nodemailer");
+require("dotenv").config();
 export const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
   secure: true, // true for 465, false for other ports
   auth: {
-    user: "mi.turno.wepapp.mails.23@gmail.com", // generated ethereal user
-    pass: "ftpauwmqiguqegjh", // generated ethereal password
+    user: process.env.NODE_MAILER_USER, // generated ethereal user
+    pass: process.env.NODE_MAILER_PASS, // generated ethereal password
   },
   tls: {
     rejectUnauthorized: false,
