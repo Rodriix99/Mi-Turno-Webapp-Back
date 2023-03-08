@@ -94,9 +94,9 @@ const me = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         if (!token)
             return res.sendStatus(400);
         const { user } = (0, token_2.validateToken)(token);
-        console.log("EsTO ES EL USER!!!!!!!! ", user);
+        //console.log("ESTO ES EL USER!!!!!!!! ", user);
         const updatedUser = yield Users_1.default.findById(user.id);
-        console.log("ESTO ES EL UPDATEDUSER la putaaaa", updatedUser);
+        //console.log("ESTO ES EL UPDATEDUSER", updatedUser);
         const payload = {
             id: updatedUser === null || updatedUser === void 0 ? void 0 : updatedUser._id,
             fullName: updatedUser === null || updatedUser === void 0 ? void 0 : updatedUser.fullName,
@@ -106,7 +106,7 @@ const me = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             usertype: updatedUser === null || updatedUser === void 0 ? void 0 : updatedUser.usertype,
         };
         res.send(payload);
-        console.log("estO  ES EL PAYLOAD", payload);
+        //console.log("ESTO  ES EL PAYLOAD", payload);
     }
     catch (err) {
         console.log(err);
@@ -138,12 +138,15 @@ const findOneUser = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 });
 exports.findOneUser = findOneUser;
 const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    /* const { id } = req.params; */
-    const { _id, fullName, email, dni } = req.body;
-    console.log(req.body);
     try {
+        console.log(" REQ.BODY", req.body);
+        const { _id, fullName, email, dni, phone } = req.body;
+        if (_id === "" || fullName === "" || email === "" || dni === "" || phone === "") {
+            return res.sendStatus(400);
+        }
+        //console.log("ESTO ES REQ.BODY NENEEE",req.body);
         const user = yield Users_1.default.findById(_id);
-        yield (user === null || user === void 0 ? void 0 : user.updateOne({ fullName, email, dni }));
+        yield (user === null || user === void 0 ? void 0 : user.updateOne({ fullName, email, dni, phone }));
         yield (user === null || user === void 0 ? void 0 : user.save());
         //console.log(user);
         res.json(user);
