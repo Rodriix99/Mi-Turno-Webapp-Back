@@ -7,7 +7,10 @@ import {
   createBranch,
   updateBranch,
   deleteBranch,
+  getAllBranches,
 } from "../controllers/branchControllers";
+
+router.get("/allbranches", getAllBranches);
 
 router.get("/branches/:page", getAllBranch);
 
