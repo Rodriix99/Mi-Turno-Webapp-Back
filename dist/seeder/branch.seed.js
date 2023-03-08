@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.seedBranch = void 0;
 const Branch_1 = __importDefault(require("../models/Branch"));
+//sucursales
 const branches = [
     {
         name: "Sucursal 1",
